@@ -34,7 +34,7 @@
                     <h2 class="title">Form Vaksinasi</h2>
                 </div>
                 <div class="card-body">
-                    <form method="POST">
+                    <form name="formAbsen" action="absen.php" method="POST" onsubmit="return validateForm()">
                         <div class="form-row">
                             <div class="name">Nama</div>
                             <div class="value">
@@ -59,25 +59,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-row m-b-55">
-                            <div class="name">Phone</div>
-                            <div class="value">
-                                <div class="row row-refine">
-                                    <div class="col-3">
-                                        <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="area_code">
-                                            <label class="label--desc">Area Code</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-9">
-                                        <div class="input-group-desc">
-                                            <input class="input--style-5" type="text" name="phone">
-                                            <label class="label--desc">Phone Number</label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="form-row">
                             <div class="name">Jurusan</div>
                             <div class="value">
@@ -99,11 +80,11 @@
                         <div class="form-row p-t-20">
                             <label class="label label--block">Sudah Vaksinasi 1?</label>
                             <div class="p-t-15">
-                                <label class="radio-container m-r-55">Yes
+                                <label name="vaksin1" class="radio-container m-r-55">Yes
                                     <input type="radio" checked="checked" name="yes">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label class="radio-container">No
+                                <label name="vaksin1" class="radio-container">No
                                     <input type="radio" name="no">
                                     <span class="checkmark"></span>
                                 </label>
@@ -112,11 +93,11 @@
                         <div class="form-row p-t-20">
                             <label class="label label--block">Sudah Vaksinasi 2?</label>
                             <div class="p-t-15">
-                                <label class="radio-container m-r-55">Yes
+                                <label name="vaksin2" class="radio-container m-r-55">Yes
                                     <input type="radio" checked="checked" name="yes">
                                     <span class="checkmark"></span>
                                 </label>
-                                <label class="radio-container">No
+                                <label name="vaksin2" class="radio-container">No
                                     <input type="radio" name="no">
                                     <span class="checkmark"></span>
                                 </label>
@@ -130,6 +111,42 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function validateForm(){
+            if(document.forms["formAbsen"]["nama"].value == ""){
+                alert("Nama Tidak Boleh Kosong");
+                document.forms["formAbsen"]["nama"].focus();
+                return false;
+            }
+            if(document.forms["formAbsen"]["nrp"].value == ""){
+                alert("NRP Tidak Boleh Kosong");
+                document.forms["formAbsen"]["nrp"].focus();
+                return false;
+            }
+            if(document.forms["formAbsen"]["email"].value == ""){
+                alert("Email Tidak Boleh Kosong");
+                document.forms["formAbsen"]["email"].focus();
+                return false;
+            }
+            if(document.forms["formAbsen"]["jurusan"].value == "0"){
+                alert("Pilih Jurusan");
+                document.forms["formAbsen"]["jurusan"].focus();
+                return false;
+            }
+            if(document.forms["formAbsen"]["vaksin1"].value == "0"){
+                alert("Pilih Status Vaksinasi");
+                document.forms["formAbsen"]["vaksin"].focus();
+                return false;
+            }
+            if(document.forms["formAbsen"]["vaksin2"].value == "0"){
+                alert("Pilih Status Vaksinasi");
+                document.forms["formAbsen"]["vaksin"].focus();
+                return false;
+            }
+
+        }
+    </script>
 
     <!-- Jquery JS-->
     <script src="vendor/jquery/jquery.min.js"></script>
